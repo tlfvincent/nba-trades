@@ -14,16 +14,13 @@ from src import extract_data
 logger = logging.getLogger(__name__)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-# NBA_TEAMS = [
-#     "ATL", "BOS", "CHA", "CHI", "CLE",
-#     "DAL", "DEN", "DET", "GSW", "HOU",
-#     "IND", "LAC", "LAL", "MEM", "MIA",
-#     "MIL", "MIN", "NJN", "NOH", "NYK",
-#     "OKC", "ORL", "PHI", "PHO", "POR",
-#     "SAC", "SAS", "TOR", "UTA", "WAS"
-# ]
 NBA_TEAMS = [
     "ATL", "BOS", "CHA", "CHI", "CLE",
+    "DAL", "DEN", "DET", "GSW", "HOU",
+    "IND", "LAC", "LAL", "MEM", "MIA",
+    "MIL", "MIN", "NJN", "NOH", "NYK",
+    "OKC", "ORL", "PHI", "PHO", "POR",
+    "SAC", "SAS", "TOR", "UTA", "WAS"
 ]
 
 
