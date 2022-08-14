@@ -91,7 +91,7 @@ def get_page_content(url):
     page_source = response.text
 
     logger.info(f"Extract all trades available in {url}")
-    soup = BeautifulSoup(page_source)
+    soup = BeautifulSoup(page_source, features="html.parser")
 
     trades = soup.findAll(class_="bullets")
     trade_ws = [info.findAll("li") for info in trades]
