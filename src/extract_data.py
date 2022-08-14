@@ -38,6 +38,7 @@ def get_nba_team_pairs(nba_teams):
 
     return nba_team_pairs
 
+
 def trader_crawler(nba_team_pairs):
     """
 
@@ -55,9 +56,12 @@ def trader_crawler(nba_team_pairs):
         team_1 = nba_pair[0]
         team_2 = nba_pair[1]
 
-        url = f"http://www.basketball-reference.com/friv/trades.fcgi?f1={team_1}&f2={team_1}"
+        url = f"http://www.basketball-reference.com/friv/trades.fcgi?f1={team_1}&f2={team_2}"
+
+        logger.info(f"Extract HTML content of URL {url}.")
         trade_ws, trade_dates = get_page_content(url)
 
+        logger.info(f"Extract all trades between {team_1} and {team_2}.")
         nba_pair_trade_info = process_trades_data(trade_ws, trade_dates)
 
         nba_pair_trade_info["team_1"] = team_1
@@ -86,11 +90,9 @@ def get_page_content(url):
         Contains dates at which all trades between teams occurred.
     """
 
-    logger.info(f"Extract HTML content of URL {url}")
     response = requests.get(url)
     page_source = response.text
 
-    logger.info(f"Extract all trades available in {url}")
     soup = BeautifulSoup(page_source, features="html.parser")
 
     trades = soup.findAll(class_="bullets")
@@ -130,14 +132,14 @@ def process_trades_data(trade_ws, trade_dates):
             )
 
             nba_pair_trade_info.append([
-                float(words[ws_past]),
-                float(words[ws_future]),
+                float(data_details[ws_past]),
+                float(data_details[ws_future]),
                 trade_dates[i]
             ])
 
     nba_pair_trade_info = pd.DataFrame(
         nba_pair_trade_info,
-        columns=["ws_sent", "ws_received", "trade_date"]
+        columns=["win_shares_sent", "win_shares_received", "trade_date"]
     )
 
     return nba_pair_trade_info
