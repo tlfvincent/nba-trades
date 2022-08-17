@@ -41,6 +41,7 @@ def get_nba_team_pairs(nba_teams):
 
 def trader_crawler(nba_team_pairs):
     """
+    Iterate through pairs of NBA teams and extract trade history.
 
     Parameters
     ----------
@@ -50,6 +51,7 @@ def trader_crawler(nba_team_pairs):
     Returns
     -------
     trade_info : dict-like
+        Contains trade history between all pairs of NBA teams.
     """
 
     trade_info = {}
@@ -108,6 +110,7 @@ def get_page_content(url):
 
 def process_trades_data(trade_ws, trade_dates):
     """
+    Process strings containing win share data and dates on each trade.
 
     Parameters
     ----------
