@@ -49,9 +49,11 @@ def trader_crawler(nba_team_pairs):
 
     Returns
     -------
-    trade_info
+    trade_info : dict-like
     """
+
     trade_info = {}
+
     for nba_pair in nba_team_pairs:
         team_1 = nba_pair[0]
         team_2 = nba_pair[1]
@@ -67,7 +69,7 @@ def trader_crawler(nba_team_pairs):
         nba_pair_trade_info["team_1"] = team_1
         nba_pair_trade_info["team_2"] = team_2
 
-    trade_info[nba_pair] = nba_pair_trade_info
+        trade_info[nba_pair] = nba_pair_trade_info
 
     return trade_info
 
