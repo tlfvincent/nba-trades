@@ -14,6 +14,7 @@ from src import extract_data
 logger = logging.getLogger(__name__)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+
 NBA_TEAMS = [
     "ATL", "BOS", "CHA", "CHI", "CLE",
     "DAL", "DEN", "DET", "GSW", "HOU",
